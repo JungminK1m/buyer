@@ -18,7 +18,7 @@
                 <td>${product.createdAt}</td>
             </tr>
         </table>
-        <form action="/product/${product.id}/purchase" name="purchase" method="post">
+        <form>
             <input type="submit" value="구매하기">
         </form>
 
