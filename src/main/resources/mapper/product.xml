@@ -5,7 +5,7 @@
 
 <mapper namespace="shop.mtcoding.buyer.model.ProductRepository">
    <select id="findAll" resultType="shop.mtcoding.buyer.model.Product">
-      select * from product_tb order by id desc
+      select * from product_tb
    </select>
    
    <select id="findById" resultType="shop.mtcoding.buyer.model.Product">
@@ -16,14 +16,13 @@
       insert into product_tb(name, price, qty, created_at) values(#{name}, #{price}, #{qty}, now())   
    </insert>
 
-   <delete id="deleteBtId" >
+   <delete id="deleteById" >
       delete from product_tb where id = #{id}
    </delete>
 
    <update id="updateById">
       update product_tb
-      set name = #{name},
-      price = #{price},
+      set
       qty = #{qty}
       where id = #{id}
    </update>
