@@ -25,11 +25,17 @@ public class productController {
         return "product/list";
     }
 
+    // select * from product where price = 1000 찾고 싶다면
+    // pk가 아니면 @pathvariable 쓸 수 없어서 queryString으로 전송해야 함
     @GetMapping("/product/{id}")
-    public String findById(@PathVariable int id, Model model) {
+    public String detail(@PathVariable int id, Model model) {
         Product product = productRepository.findById(id);
-        model.addAttribute("product", product);
-        return "product/detail";
+        if (product == null) {
+            return "redirect:/notfound";
+        } else {
+            model.addAttribute("product", product);
+            return "product/detail";
+        }
     }
 
     @PostMapping("/product/{id}/purchase")
