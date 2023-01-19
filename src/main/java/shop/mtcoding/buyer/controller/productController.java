@@ -15,10 +15,10 @@ import shop.mtcoding.buyer.model.ProductRepository;
 @Controller
 public class productController {
 
-    @Autowired
-    private ProductRepository productRepository;
+    @Autowired // 이런것을 DI 라고 함. new 안하고 ioc에 띄워놓고 autowired로 들고와서 편함
+    private ProductRepository productRepository; // 기본 생성자를 만들어서 준 거임!
 
-    @GetMapping({ "/", "product" })
+    @GetMapping({ "/", "product" }) // request로 해서 들고가지 않음
     public String findAll(Model model) {
         List<Product> productList = productRepository.findAll();
         model.addAttribute("productList", productList);
